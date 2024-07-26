@@ -1,0 +1,25 @@
+[project]
+name = "SimpleImgDescriptor"
+version = "0.1.0"
+description = "Default template for PDM package"
+authors = [
+    {name = "Bernardo A. Dal Corno", email = "bernardoadc@gmail.com"},
+]
+dependencies = [
+    "langchain==0.1.11",
+    "gradio==4.21.0",
+    "transformers==4.38.2",
+    "bs4==0.0.2",
+    "requests==2.31.0",
+    "torch==2.2.1",
+]
+requires-python = "==3.12.*"
+readme = "README.md"
+license = {text = "MIT"}
+
+
+[tool.pdm]
+distribution = false
+
+[tool.pdm.scripts]
+start = "streamlit run app.py"
