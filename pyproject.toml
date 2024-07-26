@@ -6,12 +6,15 @@ authors = [
     {name = "Bernardo A. Dal Corno", email = "bernardoadc@gmail.com"},
 ]
 dependencies = [
-    "langchain==0.1.11",
-    "gradio==4.21.0",
-    "transformers==4.38.2",
-    "bs4==0.0.2",
-    "requests==2.31.0",
-    "torch==2.2.1",
+    "langchain>=0.1.11",
+    "gradio>=4.21.0",
+    "transformers>=4.33.2",
+    "bs4>=0.0.2",
+    "requests>=2.31.0",
+    "torch>=2.2.1",
+    "pillow"
+    # "git+https://github.com/baaivision/EVA.git",
+    # "git+https://github.com/Jiaxuan-Li/EVCap.git",
 ]
 requires-python = "==3.12.*"
 readme = "README.md"
