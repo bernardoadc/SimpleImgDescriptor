@@ -12,7 +12,6 @@ dependencies = [
     "bs4==0.0.2",
     "requests==2.31.0",
     "torch==2.2.1",
-    "streamlit>=1.37.0",
 ]
 requires-python = "==3.12.*"
 readme = "README.md"
@@ -23,5 +22,5 @@ license = {text = "MIT"}
 distribution = false
 
 [tool.pdm.scripts]
-start = "streamlit run app.py"
-# start = "python app.py"
+# start = "streamlit run app.py"
+start = "python app.py"

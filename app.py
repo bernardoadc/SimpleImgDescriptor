@@ -1,7 +1,7 @@
 import requests
 from PIL import Image
 from transformers import AutoProcessor, BlipForConditionalGeneration
-import streamlit as st
+import gradio as gr
 
 # BlipProcessor
 # This is a processor class that is used for preprocessing data for the BLIP model.
@@ -20,7 +20,7 @@ model = BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image-capt
 
 def generate_caption(image):
     # Convert the image to RGB format
-    image = Image.open(image).convert('RGB')
+    image = image.convert('RGB')
     text = "the image of"
     inputs = processor(images=image, text=text, return_tensors="pt")
 
@@ -32,15 +32,14 @@ def generate_caption(image):
 
     return caption
 
-st.title("Image Captioning with BLIP")
-st.write("Upload an image and get a generated caption using the BLIP model.")
+# Create a Gradio interface
+iface = gr.Interface(
+    fn=generate_caption,
+    inputs=gr.Image(type="pil", label="Upload Image"),
+    outputs=gr.Textbox(label="Generated Caption"),
+    title="Image Captioning with BLIP",
+    description="Upload an image and get a generated caption using the BLIP model."
+)
 
-uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
-
-if uploaded_file is not None:
-    image = Image.open(uploaded_file)
-    st.image(image, caption='Uploaded Image.', use_column_width=True)
-
-    if st.button('Generate Caption'):
-        caption = generate_caption(uploaded_file)
-        st.write("Generated Caption: ", caption)
+# Launch the interface
+iface.launch()
